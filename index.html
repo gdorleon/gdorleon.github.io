@@ -3,9 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dorleon Ginel - Personal Website</title>
+  <title>Dr. Ginel Dorleon - Personal Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #f9f9f9;
+      --text: #333;
+      --header-bg: linear-gradient(135deg, #667eea, #764ba2);
+      --card-bg: #fff;
+    }
+
+    body.dark {
+      --bg: #1e1e1e;
+      --text: #f0f0f0;
+      --header-bg: linear-gradient(135deg, #333, #111);
+      --card-bg: #2c2c2c;
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -13,15 +27,17 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: #f9f9f9;
-      color: #333;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
     }
 
     header {
       text-align: center;
       padding: 50px 20px 20px;
-      background: linear-gradient(135deg, #667eea, #764ba2);
+      background: var(--header-bg);
       color: white;
+      position: relative;
     }
 
     header img {
@@ -39,8 +55,16 @@
 
     header p {
       font-size: 1.1em;
-      max-width: 600px;
+      max-width: 700px;
       margin: 10px auto 0;
+    }
+
+    .dark-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      font-size: 1.5rem;
     }
 
     main {
@@ -51,17 +75,21 @@
 
     section {
       margin-bottom: 40px;
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
     h2 {
-      color: #444;
+      color: var(--text);
       border-bottom: 2px solid #ddd;
       padding-bottom: 10px;
     }
 
     ul {
-      list-style: none;
-      padding: 0;
+      list-style-type: square;
+      padding-left: 20px;
     }
 
     li {
@@ -75,14 +103,25 @@
       background: #eee;
       color: #666;
     }
+
+    body.dark .footer {
+      background: #111;
+      color: #aaa;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
 
   <header>
+    <div class="dark-toggle" onclick="toggleDarkMode()" title="Toggle Dark Mode">🌙</div>
     <img src="g_101.png" alt="Profile Photo" />
     <h1>Dr. Ginel Dorleon</h1>
-    <p>Short bio or professional summary goes here. Highlight your field, interests, or mission.</p>
+    <p>Dr. Ginel Dorleon is an AI researcher and educator with a Ph.D. in Artificial Intelligence from Paul Sabatier University, France. His work explores machine learning, fairness, explainability, and responsible AI, with experience across academia and industry in France, Spain, the U.S., and Vietnam.</p>
   </header>
 
   <main>
@@ -90,11 +129,11 @@
       <h2>Places I Have Worked</h2>
       <ul>
         <li>RMIT University, HCMC, Vietnam – 2018–2021</li>
-        <li>SogetiLabs, Capgemini, Toulouse, France – 2023 - , AI Research Scientist</li>
-        <li>Financial Deep Mind, Hanoi, Vietnam – 2018, 2019 AI Software Engineer R&D </li>
+        <li>SogetiLabs, Capgemini, Toulouse, France – 2023–present, AI Research Scientist</li>
+        <li>Financial Deep Mind, Hanoi, Vietnam – 2018, 2019, AI Software Engineer (R&D)</li>
         <li>SofPoint Consultores, Madrid, Spain – 2018, Remote ML Software Engineer</li>
         <li>French National Institute of Genomics Center, Toulouse, France – 2017, ML R&D Engineer</li>
-        <li>Libral Capital US, New York, USA – 2014, IT System Analyts</li>
+        <li>Libral Capital US, New York, USA – 2014, IT System Analyst</li>
         <li>Toyota, Texas, USA – 2014, Remote Embedded Engineer</li>
       </ul>
     </section>
@@ -111,39 +150,73 @@
     <section>
       <h2>Research Publications</h2>
       <ul>
-        <li>"Title of Paper 1", Journal Name, 2020</li>
-        <li>"Title of Paper 2", Conference Name, 2021</li>
-        <li>"Title of Paper 3", Journal Name, 2023</li>
+        <li>"Can Image Generative Models Be Considered Experts?", Springer, 2025</li>
+        <li>"FIEAP: A Machine Learning Approach for Fair and Interpretable Employee Attrition Prediction", LNCS, 2025</li>
+        <li>"Optimizing Elevator Performance with SARL Multi-Agent Systems", ICAART, 2025</li>
+        <li>"FAPFID: A Fairness-Aware Approach for Protected Features and Imbalanced Data", Springer, 2023</li>
+        <li>"Feature selection under fairness constraints", ACM SAC, 2022</li>
+        <li>"Feature Selection Under Fairness and Performance Constraints", LNCS, 2022</li>
+        <li>"Absolute Redundancy Analysis Based on Feature Selection", ACM, 2021</li>
+        <li>"Qualification of Data Bias in the Data Science Process", EGC, 2021</li>
       </ul>
     </section>
 
     <section>
       <h2>Teaching</h2>
       <ul>
-        <li>Introduction to Machine Learning</li>
-        <li>Advanced Data Analysis</li>
-        <li>Seminar on AI Ethics</li>
+        <li>Advanced Programming for Data Science</li>
+        <li>Algorithms and Data Structures</li>
+        <li>Programming Autonomous Robots</li>
       </ul>
     </section>
 
     <section>
       <h2>Research Interests</h2>
-      <p>Artificial Intelligence, Machine Learning, Computational Neuroscience, Responsible AI, Human-AI Interaction.</p>
+      <ul>
+        <li>Machine Learning</li>
+        <li>Decision Systems</li>
+        <li>AI for Healthcare</li>
+        <li>Explainable AI</li>
+        <li>Responsible AI</li>
+        <li>Data Bias</li>
+        <li>Fairness & Transparency</li>
+        <li>Algorithm Fairness</li>
+        <li>Multi-Agent Systems</li>
+        <li>Generative AI</li>
+      </ul>
     </section>
 
     <section>
       <h2>Awards and Scholarships</h2>
       <ul>
         <li>XYZ Research Fellowship – 2019</li>
-        <li>ABC Best Paper Award – 2021</li>
-        <li>DEF Scholarship – 2022</li>
+        <li>Best Paper Award – 2021</li>
+        <li>DEF Academic Scholarship – 2022</li>
       </ul>
     </section>
   </main>
 
   <div class="footer">
-    &copy; 2025 Your Name. All rights reserved.
+    &copy; 2025 Dr. Ginel Dorleon. Contact: <a href="mailto:gg@gg.fr">gg@gg.fr</a>
   </div>
 
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+      const icon = document.querySelector(".dark-toggle");
+      const dark = document.body.classList.contains("dark");
+      icon.textContent = dark ? "☀️" : "🌙";
+      localStorage.setItem("theme", dark ? "dark" : "light");
+    }
+
+    // Load theme preference
+    (function () {
+      const theme = localStorage.getItem("theme");
+      if (theme === "dark") {
+        document.body.classList.add("dark");
+        document.querySelector(".dark-toggle").textContent = "☀️";
+      }
+    })();
+  </script>
 </body>
 </html>
