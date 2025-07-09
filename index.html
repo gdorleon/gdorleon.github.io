@@ -80,11 +80,11 @@
     }
 
     .theme-toggle svg {
-    width: 24px;
-    height: 24px;
-    fill: currentColor; /* This respects the text color */
-    transition: transform 0.3s, fill 0.3s;
-    }  
+      width: 24px;
+      height: 24px;
+      fill: white;
+      transition: transform 0.3s;
+    }
     main {
       padding: 40px 20px;
       max-width: 900px;
@@ -136,9 +136,9 @@
 <body>
 
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-  <svg class="svg-icon" viewBox="0 0 1024 1024">
-    <path d="M682.666667 284.444444a227.555556 227.555556 0 0 1 0 455.111112H341.333333a227.555556 227.555556 0 0 1 0-455.111112h341.333334m0-56.888888H341.333333a284.444444 284.444444 0 0 0 0 568.888888h341.333334a284.444444 284.444444 0 0 0 0-568.888888z m-341.333334 142.222222a142.222222 142.222222 0 1 1-142.222222 142.222222 142.222222 142.222222 0 0 1 142.222222-142.222222z m0 56.888889a85.333333 85.333333 0 1 1-85.333333 85.333333 85.333333 85.333333 0 0 1 85.333333-85.333333z"/>
-  </svg>
+      <svg id="themeIcon" viewBox="0 0 24 24">
+        <path d="M12 2a9.93 9.93 0 0 0-7.07 2.93A10 10 0 1 0 12 2zM12 22a10 10 0 0 1 0-20 10 10 0 0 0 0 20z"/>
+      </svg>
   </button>
     <img src="gith.png" alt="Profile Photo"/>
     <h1>Dr. Ginel Dorleon</h1>
