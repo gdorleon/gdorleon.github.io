@@ -1,833 +1,496 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/gdorleon/gdorleon.github.io/main/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dr. Ginel Dorleon | Portfolio</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <style>
-        /* Custom scrollbar for a more modern look */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9; /* bg-slate-100 */
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1; /* bg-slate-300 */
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8; /* bg-slate-400 */
-        }
-        @keyframes fade-in {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-            animation: fade-in 0.5s ease-out forwards;
-        }
-        /* Custom styles for professional experience (timeline) */
-        .timeline-item {
-          position: relative;
-          border-left: 2px solid #cbd5ee; /* slate-300 */
-          padding-left: 20px;
-          margin-left: 2px;
-        }
-        .timeline-dot {
-          position: absolute;
-          left: -8px;
-          top: 0;
-          height: 14px;
-          width: 14px;
-          background-color: #3b82f6; /* blue-500 */
-          border-radius: 50%;
-          border: 2px solid #ffffff; /* white */
-        }
-    </style>
-  </head>
-  <body class="bg-gradient-to-br from-slate-50 to-blue-50">
-    <div id="root" class="bg-gradient-to-br from-slate-50 to-blue-50 text-slate-700 min-h-screen font-sans antialiased">
-      </div>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/gdorleon/gdorleon.github.io/main/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dr. Ginel Dorleon | Portfolio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Custom scrollbar for a more modern look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9; /* bg-slate-100 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; /* bg-slate-300 */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; /* bg-slate-400 */
+        }
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fade-in 0.5s ease-out forwards;
+        }
+        /* Custom styles for professional experience (timeline) */
+        .timeline-item {
+          position: relative;
+          border-left: 2px solid #cbd5ee; /* slate-300 */
+          padding-left: 20px;
+          margin-left: 2px;
+        }
+        .timeline-dot {
+          position: absolute;
+          left: -8px;
+          top: 0;
+          height: 14px;
+          width: 14px;
+          background-color: #3b82f6; /* blue-500 */
+          border-radius: 50%;
+          border: 2px solid #ffffff; /* white */
+        }
+    </style>
+  </head>
+  <body class="bg-gradient-to-br from-slate-50 to-blue-50">
+    <div id="root" class="bg-gradient-to-br from-slate-50 to-blue-50 text-slate-700 min-h-screen font-sans antialiased">
+      </div>
 
-    <script>
-      // -------------------------------------------------------------------
-      // 1. DATA AND CONSTANTS (Updated with your new publications list)
-      // -------------------------------------------------------------------
-      
-      const views = {
-        HOME: 'home',
-        PROFESSIONAL_EXPERIENCE: 'professionalExperience',
-        TEACHING: 'teaching'
-      };
+    <script>
+      // -------------------------------------------------------------------
+      // 1. DATA AND CONSTANTS (Updated with your new publications list)
+      // -------------------------------------------------------------------
+      
+      const views = {
+        HOME: 'home',
+        PROFESSIONAL_EXPERIENCE: 'professionalExperience',
+        TEACHING: 'teaching'
+      };
 
-      const professionalTrips = [
-        { city: 'Melbourne', country: 'Australia', date: 'April 2025' },
-        { city: 'Porto', country: 'Portugal', date: 'February 2025' },
-        { city: 'Bratislava', country: 'Slovakia', date: 'December 2024' },
-        { city: 'Oregon', country: 'USA', date: 'October 2024' },
-        { city: 'Doha', country: 'Qatar', date: 'September 2024' },
-        { city: 'Vienna', country: 'Austria', date: 'June 2024, June 2023' },
-        { city: 'Berlin', country: 'Germany', date: 'May 2023' },
-        { city: 'Multiple Cities', country: 'France', details: 'Paris, Toulouse, Castres, etc.', date: '2019, 2020' },
-        { city: 'Taipei', country: 'Taiwan', date: 'July 2019' },
-        { city: 'Madrid', country: 'Spain', date: 'August 2018' },
-        { city: 'Singapore', country: 'Singapore', date: 'May 2018' },
-        { city: 'New York', country: 'USA', date: 'May–Sep 2014' },
-      ];
+      const professionalTrips = [
+        { city: 'Melbourne', country: 'Australia', date: 'April 2025' },
+        { city: 'Porto', country: 'Portugal', date: 'February 2025' },
+        { city: 'Bratislava', country: 'Slovakia', date: 'December 2024' },
+        { city: 'Oregon', country: 'USA', date: 'October 2024' },
+        { city: 'Doha', country: 'Qatar', date: 'September 2024' },
+        { city: 'Vienna', country: 'Austria', date: 'June 2024, June 2023' },
+        { city: 'Berlin', country: 'Germany', date: 'May 2023' },
+        { city: 'Multiple Cities', country: 'France', details: 'Paris, Toulouse, Castres, etc.', date: '2019, 2020' },
+        { city: 'Taipei', country: 'Taiwan', date: 'July 2019' },
+        { city: 'Madrid', country: 'Spain', date: 'August 2018' },
+        { city: 'Singapore', country: 'Singapore', date: 'May 2018' },
+        { city: 'New York', country: 'USA', date: 'May–Sep 2014' },
+      ];
 
-      const coursesData = [
-        {
-          title: 'Algorithms and Analysis',
-          level: 'Undergraduate',
-          university: 'RMIT University',
-          description: 'A foundational course on designing, analyzing, and implementing algorithms for computational problems.',
-          modules: [],
-        },
-        {
-          title: 'Programming Autonomous Robots',
-          level: 'Postgraduate',
-          university: 'RMIT University',
-          description: 'Hands-on experience in programming robotic systems to perceive, decide, and act in the real world.',
-          modules: [],
-        },
-        {
-          title: 'Games and AI Techniques',
-          level: 'Postgraduate',
-          university: 'RMIT University',
-          description: 'Exploring the core AI techniques that bring modern video games to life, from pathfinding to procedural content generation.',
-          modules: [],
-        },
-        {
-          title: 'Intelligent Decision Making',
-          level: 'Postgraduate',
-          university: 'RMIT University',
-          description: 'Exploring computational models and techniques for automated reasoning and decision-making under uncertainty.',
-          modules: [],
-        },
-        {
-          title: 'Cloud Computing',
-          level: 'Postgraduate',
-          university: 'RMIT University',
-          description: 'A comprehensive overview of cloud computing concepts, service models, and architectures for building scalable systems.',
-          modules: [],
-        },
-        {
-          title: 'Foundations of Artificial Intelligence',
-          level: 'Postgraduate',
-          university: 'University of Paul Sabatier Toulouse',
-          description: 'A rigorous introduction to the core concepts and techniques of modern artificial intelligence.',
-          modules: [
-              'History and Philosophy of AI; Intelligent Agents',
-              'Problem Solving with Heuristic Search',
-              'Constraint Satisfaction and Optimization',
-              'Knowledge Representation and Logical Reasoning',
-              'Planning and Acting in the Real World',
-              'Uncertainty and Probabilistic Reasoning',
-              'Machine Learning: Supervised and Unsupervised Learning',
-              'Machine Learning: Neural Networks and Deep Learning',
-              'Natural Language Processing',
-              'Perception and Computer Vision',
-              'Robotics and Embodied AI',
-              'AI Ethics, Safety, and Societal Impact',
-          ]
-        },
-        {
-          title: 'Artificial Intelligence Professional',
-          level: 'Postgraduate',
-          university: 'University of Paul Sabatier Toulouse',
-          description: 'Focuses on the professional practice of AI, covering the entire lifecycle from business strategy to MLOps and responsible deployment.',
-          modules: [
-              'The AI Project Lifecycle: From Concept to Production',
-              'Business and Data Strategy for AI',
-              'Advanced Data Engineering and Feature Stores',
-              'MLOps: CI/CD for Machine Learning',
-              'Model Deployment and Serving at Scale',
-              'Monitoring, Logging, and Model Retraining',
-              'Responsible AI: Fairness, Explainability, and Privacy',
-              'AI Governance and Regulatory Compliance',
-              'Communicating AI Concepts to Stakeholders',
-              'Building and Leading AI Teams',
-              'Cloud AI Platforms and Services',
-              'Capstone: End-to-End AI System Design',
-          ]
-        },
-        {
-          title: 'Machine Learning and Big Data',
-          level: 'Postgraduate',
-          university: ['University of Paul Sabatier Toulouse'],
-          description: 'An advanced course on training and deploying machine learning models on massive datasets using distributed computing frameworks.',
-          modules: [
-              'Foundations of Distributed Systems',
-              'Introduction to the Big Data Ecosystem (Hadoop & Spark)',
-              'Apache Spark Core Concepts',
-              'Data Ingestion and Processing Pipelines at Scale',
-              'Distributed Machine Learning with Spark MLlib',
-              'Large-Scale Model Training and Tuning',
-              'Stream Processing for Real-Time Analytics',
-              'Advanced Analytics with Graph Processing',
-              'Cloud Data Warehouses and Data Lakes',
-              'NoSQL Databases for Big Data',
-              'Architecting Big Data Solutions',
-              'Case Study: Building a Recommendation Engine at Scale',
-          ]
-        },
-        {
-          title: 'Natural Language Processing',
-          level: 'Postgraduate',
-          university: 'University of Paul Sabatier Toulouse',
-          description: 'A deep dive into the models and techniques used to understand and generate human language, from classic methods to modern transformers and LLMs.',
-          modules: [
-            'Introduction to NLP and Text Processing',
-            'Language Modeling (N-grams and Neural LMs)',
-            'Vector Semantics and Word Embeddings (Word2Vec, GloVe)',
-            'Text Classification and Sentiment Analysis',
-            'Sequence Labeling: Part-of-Speech Tagging and Named Entity Recognition',
-            'Recurrent Neural Networks (RNNs) and LSTMs for Sequential Data',
-            'Attention Mechanisms and the Transformer Architecture',
-            'BERT and Pre-trained Language Models',
-            'Machine Translation and Sequence-to-Sequence Models',
-            'Coreference Resolution and Discourse Analysis',
-            'Dialogue Systems and Chatbots',
-            'NLP Ethics and Future Trends',
-          ]
-        },
-      ];
+      const coursesData = [
+        {
+          title: 'Algorithms and Analysis',
+          level: 'Undergraduate',
+          university: 'RMIT University',
+          description: 'A foundational course on designing, analyzing, and implementing algorithms for computational problems.',
+          modules: [],
+        },
+        {
+          title: 'Programming Autonomous Robots',
+          level: 'Postgraduate',
+          university: 'RMIT University',
+          description: 'Hands-on experience in programming robotic systems to perceive, decide, and act in the real world.',
+          modules: [],
+        },
+        {
+          title: 'Games and AI Techniques',
+          level: 'Postgraduate',
+          university: 'RMIT University',
+          description: 'Exploring the core AI techniques that bring modern video games to life, from pathfinding to procedural content generation.',
+          modules: [],
+        },
+        {
+          title: 'Intelligent Decision Making',
+          level: 'Postgraduate',
+          university: 'RMIT University',
+          description: 'Exploring computational models and techniques for automated reasoning and decision-making under uncertainty.',
+          modules: [],
+        },
+        {
+          title: 'Cloud Computing',
+          level: 'Postgraduate',
+          university: 'RMIT University',
+          description: 'A comprehensive overview of cloud computing concepts, service models, and architectures for building scalable systems.',
+          modules: [],
+        },
+        {
+          title: 'Foundations of Artificial Intelligence',
+          level: 'Postgraduate',
+          university: 'University of Paul Sabatier Toulouse',
+          description: 'A rigorous introduction to the core concepts and techniques of modern artificial intelligence.',
+          modules: [
+              'History and Philosophy of AI; Intelligent Agents',
+              'Problem Solving with Heuristic Search',
+              'Constraint Satisfaction and Optimization',
+              'Knowledge Representation and Logical Reasoning',
+              'Planning and Acting in the Real World',
+              'Uncertainty and Probabilistic Reasoning',
+              'Machine Learning: Supervised and Unsupervised Learning',
+              'Machine Learning: Neural Networks and Deep Learning',
+              'Natural Language Processing',
+              'Perception and Computer Vision',
+              'Robotics and Embodied AI',
+              'AI Ethics, Safety, and Societal Impact',
+          ]
+        },
+        {
+          title: 'Artificial Intelligence Professional',
+          level: 'Postgraduate',
+          university: 'University of Paul Sabatier Toulouse',
+          description: 'Focuses on the professional practice of AI, covering the entire lifecycle from business strategy to MLOps and responsible deployment.',
+          modules: [
+              'The AI Project Lifecycle: From Concept to Production',
+              'Business and Data Strategy for AI',
+              'Advanced Data Engineering and Feature Stores',
+              'MLOps: CI/CD for Machine Learning',
+              'Model Deployment and Serving at Scale',
+              'Monitoring, Logging, and Model Retraining',
+              'Responsible AI: Fairness, Explainability, and Privacy',
+              'AI Governance and Regulatory Compliance',
+              'Communicating AI Concepts to Stakeholders',
+              'Building and Leading AI Teams',
+              'Cloud AI Platforms and Services',
+              'Capstone: End-to-End AI System Design',
+          ]
+        },
+        {
+          title: 'Machine Learning and Big Data',
+          level: 'Postgraduate',
+          university: ['University of Paul Sabatier Toulouse'],
+          description: 'An advanced course on training and deploying machine learning models on massive datasets using distributed computing frameworks.',
+          modules: [
+              'Foundations of Distributed Systems',
+              'Introduction to the Big Data Ecosystem (Hadoop & Spark)',
+              'Apache Spark Core Concepts',
+              'Data Ingestion and Processing Pipelines at Scale',
+              'Distributed Machine Learning with Spark MLlib',
+              'Large-Scale Model Training and Tuning',
+              'Stream Processing for Real-Time Analytics',
+              'Advanced Analytics with Graph Processing',
+              'Cloud Data Warehouses and Data Lakes',
+              'NoSQL Databases for Big Data',
+              'Architecting Big Data Solutions',
+              'Case Study: Building a Recommendation Engine at Scale',
+          ]
+        },
+        {
+          title: 'Natural Language Processing',
+          level: 'Postgraduate',
+          university: 'University of Paul Sabatier Toulouse',
+          description: 'A deep dive into the models and techniques used to understand and generate human language, from classic methods to modern transformers and LLMs.',
+          modules: [
+            'Introduction to NLP and Text Processing',
+            'Language Modeling (N-grams and Neural LMs)',
+            'Vector Semantics and Word Embeddings (Word2Vec, GloVe)',
+            'Text Classification and Sentiment Analysis',
+            'Sequence Labeling: Part-of-Speech Tagging and Named Entity Recognition',
+            'Recurrent Neural Networks (RNNs) and LSTMs for Sequential Data',
+            'Attention Mechanisms and the Transformer Architecture',
+            'BERT and Pre-trained Language Models',
+            'Machine Translation and Sequence-to-Sequence Models',
+            'Coreference Resolution and Discourse Analysis',
+            'Dialogue Systems and Chatbots',
+            'NLP Ethics and Future Trends',
+          ]
+        },
+      ];
 
-      const professionalExperience = [
-        {
-          title: 'Lecturer in Artificial Intelligence',
-          institution: 'RMIT University',
-          location: 'Ho Chi Minh City, Vietnam',
-          date: 'July 2023 – Present',
-          description: 'Delivering foundational and advanced courses in AI and Machine Learning. Supervising research projects at undergraduate and postgraduate levels. Actively contributing to the School of Science, Engineering and Technology.',
-          details: [
-            'Courses include: Algorithms and Analysis, Programming Autonomous Robots, Games and AI Techniques, Intelligent Decision Making, Cloud Computing.',
-            'Research focus on Explainable AI, Fairness, and Responsible AI.',
-          ],
-        },
-        {
-          title: 'AI Research Scientist (R&D)',
-          institution: 'SogetiLabs (Capgemini)',
-          location: 'Toulouse, France',
-          date: 'January 2020 – June 2023',
-          description: 'Led research projects in Responsible AI and fairness for clients in the aerospace, finance, and public sectors.',
-          details: [
-            'Developed a proprietary fairness auditing framework for large language models (LLMs) used in customer service applications.',
-            'Published research in top-tier conferences and journals on algorithmic bias mitigation.',
-            'Collaborated with the Capgemini Applied Innovation Exchange (AIE) to integrate R&D outputs into commercial offerings.',
-          ],
-        },
-        {
-          title: 'PhD Researcher (Contractual)',
-          institution: 'Toulouse Institute for Computer Science Research (IRIT), University of Paul Sabatier',
-          location: 'Toulouse, France',
-          date: 'October 2018 – December 2022',
-          description: 'Conducted doctoral research on the intersection of Machine Learning, fairness, and Multi-Agent Systems.',
-          details: [
-            'Thesis: “Fairness in Multi-Agent Decision Systems: From Bias Detection to Mitigation”.',
-            'Developed novel, provably fair resource allocation algorithms.',
-            'Secured funding for conference travel and workshops.',
-          ],
-        },
-        {
-          title: 'Visiting Researcher',
-          institution: 'Universitat de Barcelona',
-          location: 'Barcelona, Spain',
-          date: 'July 2018 – September 2018',
-          description: 'Contributed to the development of a real-time image processing pipeline for robotics applications.',
-        },
-        {
-          title: 'Research Intern (Deep Learning)',
-          institution: 'NYU Tandon School of Engineering',
-          location: 'New York, USA',
-          date: 'May 2014 – September 2014',
-          description: 'Worked on early deep learning models for sequence-to-sequence prediction in a traffic flow analysis project.',
-        },
-      ];
-      
-      const publications = [
-        {
-          type: 'CONFERENCE PAPER',
-          title: 'BALM: A Bias-Aware Framework to Mitigate Homogeneity and Premise-Acceptance Biases in LLMs',
-          date: 'Dec 2025',
-          publicationDetails: 'ACM/IEEE Joint Conference on Digital Libraries (JCDL)',
-          coAuthors: 'Dorleon G, et al.',
-          doi: '',
-          description: 'Large Language Models (LLMs) generate fluent text but often reproduce and amplify societal biases from their training data. In workplace and social contexts, we find two recurring failures: models frequently accept biased premises instead of reframing them, and they portray marginalized groups with less variety than majority groups, a homogeneity bias that flattens individuality. Existing alignment reduces overt toxicity yet leaves these subtler patterns largely intact. To address this problem, we introduce BALM, a bias-aware generation framework that inserts a lightweight detector into decoding, triggers a concise bias instruction when needed, and applies mild diversity control in group-focused outputs. Across seven systems and a series of prompt biased testbed with neutral controls, BALM increases the rate at which responses challenge biased premises by 29 points over a strong baseline and lowers the homogeneity gap to +0.02, while maintaining accuracy and helpfulness on neutral inputs. The detector attains up to 3x higher bias-detection accuracy than baselines. These results show that targeted, deployment-ready interventions can improve fairness without sacrificing fluency or requiring full retraining. Beyond the constructed testbed, BALM also generalizes to public benchmarks including StereoSet and BBQ, where it reduces stereotypical defaults by 12–20 points while preserving factual accuracy.',
-          status: 'Forthcoming',
-          ranking: 'A*',
-        },
-        {
-          type: 'CONFERENCE PAPER',
-          title: 'PrefixGuard LLMs: Hate Speech and Sexism Detection',
-          date: 'Dec 2025',
-          publicationDetails: 'ACM/IEEE Joint Conference on Digital Libraries (JCDL)',
-          coAuthors: 'Dorleon G, et al.',
-          doi: '',
-          description: 'Detecting hate speech and sexism on online platforms remains challenging because such content is often subtle and highly dependent on context. Large Language Models (LLMs) provide strong text representations for this task, but fully fine-tuning them is computationally expensive and can reinforce existing social biases. To address these limitations, we propose PrefixGuard — a parameter-efficient approach based on prefix tuning. Instead of updating all model weights, PrefixGuard learns small trainable prefix vectors at each Transformer layer and adds a lightweight classification head, while keeping the LLM backbone frozen. We formally define this method for text classification and analyze how it reshapes internal representations of biased or offensive language. Experiments on three benchmark datasets EDOS (sexism), OLID (offense), and HatEval (hate toward women and immigrants) show that PrefixGuard consistently outperforms BERT and RoBERTa baselines and reaches performance competitive with full fine-tuning, while training less than 1% of parameters. Additional analysis shows that PrefixGuard improves group-level fairness on HatEval, remains robust to adversarial text obfuscation, and produces better-calibrated probability outputs. These results highlight PrefixGuard as a practical, resource-efficient, and effective alternative to full fine-tuning for hate speech and sexism detection in real-world moderation systems.',
-          status: 'Forthcoming',
-          ranking: 'A*',
-        },
-        {
-          type: 'CONFERENCE PAPER',
-          title: 'ASAP: Constant-Factor Proportional Fairness via Learning-Augmented Online Allocation',
-          date: 'Dec 2025',
-          publicationDetails: 'IEEE International Conference on Data Mining (ICDM)',
-          coAuthors: 'Dorleon G, et al.',
-          doi: '',
-          description: 'This paper introduces ASAP, a novel learning-augmented online allocation algorithm that achieves constant-factor proportional fairness. We address the challenge of making fair decisions in real-time environments with uncertain inputs by integrating machine learning predictions to guide a robust online framework.',
-          status: 'Forthcoming',
-          ranking: 'A*',
-        },
-        {
-          type: 'CONFERENCE PAPER',
-          title: 'How LLMs Handle Cultural Bias: Reactions to Asian Minority Historical Narratives',
-          date: 'Nov 2025',
-          publicationDetails: 'International Conference on Asia-Pacific Digital Libraries (ICADL)',
-          coAuthors: 'Dorleon G, et al.',
-          doi: '',
-          description: 'This study investigates the performance of large language models (LLMs) when processing and generating content related to historical narratives of Asian minority groups. We analyze the models for cultural biases and stereotypes, providing a critical assessment of their ability to handle sensitive and nuanced cultural information.',
-          status: 'Forthcoming',
-          ranking: 'A',
-        },
-        {
-          type: 'CONFERENCE PAPER',
-          title: 'Uncovering Cultural Biases and Stereotypes in Large Language Models',
-          date: 'Nov 2025',
-          publicationDetails: 'International Conference on Asia-Pacific Digital Libraries (ICADL)',
-          coAuthors: 'Dorleon G, et al.',
-          doi: '',
-          description: 'A comprehensive analysis of cultural biases embedded in prominent large language models. This research employs a novel framework to systematically uncover and quantify stereotypes across different cultures, offering insights for developing more equitable and culturally aware AI systems.',
-          status: 'Forthcoming',
-          ranking: 'A',
-        },
-        {
-          type: 'CONFERENCE PAPER',
-          title: 'Can Image Generative Models Be Considered Experts?',
-          date: '26 Apr 2025',
-          publicationDetails: 'Information and Communication Technology, pp. 406-417, Springer, Singapore',
-          coAuthors: 'Ba Hai Quang D, Dorleon G',
-          doi: '10.1007/978-981-96-4291-5_33',
-          description: 'This paper addresses foundational challenges in evaluating Generative Artificial Intelligence (GAI), focusing on the transition from expertise evaluation to intelligence evaluation. It critiques both quantitative and qualitative metrics for GAI, highlighting limitations in human-algorithm interaction environments. The study examines knowledge representation in neural network architectures and the processes of filtering versus tokenisation for image processing, emphasising inconsistencies and lack of standardisation in test design. Based on this finding the paper proposes a framework for future research to further explore the research questions.'
-        },
-        {
-          type: 'CONFERENCE PAPER',
-          title: 'FIEAP: A Machine Learning Approach for Fair and Interpretable Employee Attrition Prediction',
-          date: '2025',
-          publicationDetails: 'Information Integration and Web Intelligence, Lecture Notes in Computer Science, 15342:198-211, Springer Nature',
-          coAuthors: 'Dorleon G',
-          doi: '10.1007/978-3-031-78090-5_17',
-          description: 'In the current competitive job market, industries are confronting significant hurdles with employee attrition and notable turnover rates. To address these pressing concerns, organizations are progressively leveraging artificial intelligence (AI) to forecast employee attrition and deploy efficient retention strategies. Many existing machine learning approaches have tried to predict employee attrition rate across diverse organizations. However, we notice that they have limited ability to deal with fairness and interpretability while predicting employee attrition rate.To address this disparity, we present FIEAP in this paper, an interpretable machine learning method designed for fair prediction of employee attrition. Our approach employs ensemble learning with a stacking strategy, incorporating four distinct machine learning algorithms. To ensure fairness and enhance interpretability, we integrate LIME (Local Interpretable Model-Agnostic Explanations).We evaluate the proposed approach using a real-life dataset from CPC HR Employee Analytic and report on its performance in terms of prediction accuracy, fairness metrics, and feature importance. The results demonstrate the potential of our approach to provide clear explanations while maintaining fairness in attrition prediction.',
-          citations: '11 citation on Dimensions.',
-          ranking: 'B',
-        },
-          {
-          type: 'CONFERENCE PAPER',
-          title: 'Optimizing Elevator Performance with SARL Multi-Agent Systems: A Distributed Approach for Enhanced Responsiveness and Efficiency',
-          date: '1 Jan 2025',
-          publicationDetails: 'Proceedings of the 17th International Conference on Agents and Artificial Intelligence, pp. 158-165, INSTICC',
-          coAuthors: 'Le V, Joegensen O, Nguyen T...2 more',
-          doi: '10.5220/0013098400003890',
-          description: '',
-          ranking: 'B',
-        },
-        {
-          type: 'BOOK CHAPTER',
-          title: 'FAPFID: A Fairness-Aware Approach for Protected Features and Imbalanced Data',
-          date: '2023',
-          publicationDetails: 'Lecture Notes in Computer Science, pp. 107-125, Springer',
-          coAuthors: 'Dorleon G, Megdiche I, Bricon-Souf N...3 more',
-          doi: '10.1007/978-3-662-66863-4_5',
-          description: 'The use of automated decision-making based on machine learning algorithms has raised concerns about potential discrimination against minority group defined by protected features such as gender, race, etc. Particularly, in some areas with high social impact such as justice, job search or healthcare, it has been observed that using protected feature in machine learning algorithms can lead to unfair decisions that favor one group (privileged) over another group (unprivileged). In order to improve fairness in decision-making with regard to protected features, many machine learning approaches focus either on discarding the protected features or maintaining an overall accuracy performance for both unprivileged and privileged groups. However, we notice that these approaches have limited efficiency in the case where the protected features are useful for the learning model or when dealing with imbalanced data.To overcome this limitation when dealing with such issues, we propose in this work FAPFID, a fairness-aware strategy based on the use of balanced and stable clusters. To do this, we divide our input data into stable clusters (subgroups) while ensuring that privileged and unprivileged groups are fairly represented in each cluster. Experiments on three real-world and biased datasets demonstrated that our proposed method outperforms state-of-the-art fairness-aware methods under comparison in terms of performance and fairness scores.',
-          citations: '11 citation on Dimensions.'
-        },
-        {
-          type: 'CONFERENCE PAPER',
-          title: 'Feature selection under fairness constraints',
-          date: '25 Apr 2022',
-          publicationDetails: 'Proceedings of the 37th ACM/SIGAPP Symposium on Applied Computing, pp. 1125-1127, Association for Computing Machinery (ACM)',
-          coAuthors: 'Dorleon G, Megdiche I, Bricon-Souf N...1 more',
-          doi: '10.1145/3477314.3507168',
-          description: 'Learning from large dimensional data presents major challenges related to the size of the data. Thus, dimensionality reduction techniques such as feature selection are brought in to reduce computation time, improve prediction performance, and better understand the data. However, two problems can occur with current feature selection methods when protected features are considered. The presence of protected features among the selected ones which often lead to unfair results and the presence of redundant features which carry potentially the same information with the protected ones. By protected features we mean features on which it is important to not have bias due to data imbalances. In view of such issues, we introduce a fair feature selection method that takes into account the existence of protected features and their redundant. Our new method finds a set of relevant features with no protected features with the least possible redundancy under prediction quality constraint. This constraint consists of a trade-off between fairness and prediction performance. Below, we outline the strategy of our trade-off approach.',
-          citations: '33 total citations on Dimensions.',
-          ranking: 'B',
-        },
-        {
-          type: 'CONFERENCE PAPER',
-          title: 'Feature Selection Under Fairness and Performance Constraints',
-          date: '2022',
-          publicationDetails: 'Big Data Analytics and Knowledge Discovery, Lecture Notes in Computer Science, 13428:125-130, Springer Nature',
-          coAuthors: 'Dorleon G, Megdiche I, Bricon-Souf N...1 more',
-          doi: '10.1007/978-3-031-12670-3_11',
-          description: 'Feature selection is an essential preprocessing procedure in data analysis. The process refers to selecting a subset of relevant features to improve prediction performance and better understand the data. However, we notice that traditional feature selection methods have limited ability to deal with data distribution over protected features due to data imbalance and indeed protected features are selected. Two problems can occur with current feature selection methods when protected features are considered: the presence of protected features among the selected ones which often lead to unfair results and the presence of redundant features which carry potentially the same information with the protected ones. To address these issues, we introduce in this paper a fair feature selection method that takes into account the existence of protected features and their redundant. Our new method finds a set of relevant features with no protected features and with the least possible redundancy under prediction quality constraint. This constraint consists of a trade-off between fairness and prediction performance. Our experiments on well-known biased datasets from the literature demonstrated that our proposed method outperformed the traditional feature selection methods under comparison in terms of performance and fairness.',
-          citations: '55 total citations on Dimensions.',
-          ranking: 'B',
-        },
-        {
-          type: 'CONFERENCE PAPER',
-          title: 'Absolute Redundancy Analysis Based on Features Selection',
-          date: '23 Jul 2021',
-          publicationDetails: '2021 4th International Conference on Data Science and Information Technology, pp. 458-461, Association for Computing Machinery (ACM)',
-          coAuthors: 'Dorleon G, Bricon-Souf N, Megdiche I...1 more',
-          doi: '10.1145/3478905.3479002',
-          description: 'The goal of feature selection (FS) in machine learning is to find the best subset of features to create efficient models for a learning task. Different FS methods are then used to assess features relevancy. An efficient feature selection method should be able to select relevant and non-redundant features in order to improve learning performance and training efficiency on large data. However in the case of non-independents features, we saw existing features selection methods inappropriately remove redundancy which leads to performance loss. We propose in this article a new criteria for feature redundancy analysis. Using our proposed criteria, we then design an efficient features redundancy analysis method to eliminate redundant features and optimize the performance of a classifier. We experimentally compare the efficiency and performance of our method against other existing methods which may remove redundant features. The results obtained show that our method is effective in maximizing performance while reducing redundancy.',
-          citations: '33 total citations on Dimensions.',
-          ranking: 'C',
-        },
-        {
-          type: 'CONFERENCE PAPER',
-          title: 'Qualification of data bias in the data science process',
-          date: '1 Jan 2021',
-          publicationDetails: 'Extraction Et Gestion Des Connaissances Egc 2021, pp. 515-516',
-          coAuthors: 'Dorleon G, Bricon-Souf N, Megdiche I...1 more',
-          doi: '',
-          description: '',
-          ranking: 'C',
-        }
-      ];
-
-
-      // -------------------------------------------------------------------
-      // 2. STATE AND UTILITIES
-      // -------------------------------------------------------------------
-
-      let activeView = views.HOME;
-      let expandedPublication = null;
-      // Default to the first course with modules
-      const firstCourseWithModulesIndex = coursesData.findIndex(c => c.modules && c.modules.length > 0);
-      let openCourseIndex = firstCourseWithModulesIndex !== -1 ? firstCourseWithModulesIndex : 0; 
-      
-      const root = document.getElementById('root');
-
-      function getRankingClass(ranking) {
-        switch (ranking) {
-            case 'A*': return 'text-red-800 bg-red-100';
-            case 'A': return 'text-violet-800 bg-violet-100';
-            case 'B': return 'text-sky-800 bg-sky-100';
-            case 'C': return 'text-slate-600 bg-slate-100';
-            default: return '';
-        }
-      }
-
-      function getUniversityTagClass(uni) {
-        switch (uni) {
-            case 'RMIT University':
-                return 'text-red-800 bg-red-100';
-            case 'University of Paul Sabatier Toulouse':
-                return 'text-indigo-800 bg-indigo-100';
-            default:
-                return 'text-slate-600 bg-slate-100';
-        }
-      }
-
-      function setActiveView(view) {
-        activeView = view;
-        expandedPublication = null;
-        openCourseIndex = firstCourseWithModulesIndex !== -1 ? firstCourseWithModulesIndex : 0; // Reset default open course
-        renderApp();
-      }
-
-      function togglePublication(title) {
-        expandedPublication = expandedPublication === title ? null : title;
-        renderApp();
-      }
-      
-      function toggleCourse(index) {
-          openCourseIndex = openCourseIndex === index ? null : index;
-          renderApp();
-      }
-      
-      // -------------------------------------------------------------------
-      // 3. COMPONENTS (Render Functions)
-      // -------------------------------------------------------------------
-
-      function NavItem(label, view) {
-        const isActive = activeView === view;
-        return `
-          <button
-            onclick="setActiveView('${view}')"
-            class="relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${isActive ? 'bg-blue-100 text-blue-700' : 'text-slate-600 hover:bg-slate-100'}"
-          >
-            ${label}
-          </button>
-        `;
-      }
-
-      function Header() {
-        return `
-          <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-lg shadow-slate-200/50">
-            <nav class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-              <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                  <h1 class="text-xl font-bold text-slate-800">Dr. Ginel Dorleon</h1>
-                </div>
-                <div class="flex items-baseline space-x-2">
-                  ${NavItem("Home", views.HOME)}
-                  ${NavItem("Professional Experience", views.PROFESSIONAL_EXPERIENCE)}
-                  ${NavItem("Teaching", views.TEACHING)}
-                </div>
-              </div>
-            </nav>
-          </header>
-        `;
-      }
-
-      function SectionTitle(title, className = '') {
-        return `
-          <h2 class="text-3xl font-bold text-slate-900 mb-6 border-l-4 border-blue-600 pl-4 ${className}">${title}</h2>
-        `;
-      }
-
-      function AboutSection(title, contentHTML) {
-        return `
-            <section class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200/80 shadow-md shadow-slate-200/60 transition-all duration-300 hover:shadow-xl hover:shadow-slate-300/60 hover:-translate-y-1">
-                <h3 class="text-2xl font-bold text-blue-700 mb-4 border-b-2 border-slate-200 pb-3">${title}</h3>
-                ${contentHTML}
-            </section>
-        `;
-      }
-
-      function InfoCard() {
-        return `
-            <div class="bg-white p-6 rounded-xl border border-slate-200/80 shadow-md shadow-slate-200/60 sticky top-24 transition-all duration-300 hover:shadow-xl hover:shadow-slate-300/60 hover:-translate-y-1">
-                <img
-                    src="https://raw.githubusercontent.com/gdorleon/gdorleon.github.io/main/gith.png"
-                    alt="Profile photo of Dr. Ginel Dorleon"
-                    class="w-24 h-24 rounded-full object-cover mx-auto shadow-lg mb-4"
-                />
-                <h3 class="text-2xl font-bold text-slate-800 text-center">Dr. Ginel Dorleon</h3>
-                <div class="text-center text-blue-600 mt-1">
-                    <p>AI Research Scientist | Lecturer, Artificial Intelligence</p>
-                </div>
-                
-                <div class="mt-6 space-y-3 text-sm">
-                     <div class="flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-3 text-slate-400" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 2l7.997 3.884A2 2 0 0119 7.616V16a2 2 0 01-2 2H3a2 2 0 01-2-2V7.616a2 2 0 011.003-1.732zM10 4.14L3 7.5v7.5h14V7.5L10 4.14z" /></svg>
-                        <a href="mailto:ginel.dorleon@rmit.edu.vn" class="text-slate-600 hover:text-blue-600 transition-colors">ginel.dorleon@rmit.edu.vn</a>
-                    </div>
-                </div>
-            </div>
-        `;
-      }
-
-      function PublicationCard(publication) {
-        const isExpanded = expandedPublication === publication.title;
-        const hasDescription = publication.description && publication.description.length > 0;
-        const rankingClass = getRankingClass(publication.ranking);
-        const typeClass = publication.type === 'BOOK CHAPTER' ? 'text-purple-700 bg-purple-100' : 'text-green-700 bg-green-100';
-
-        let descriptionHTML = '';
-        if (hasDescription) {
-          descriptionHTML = `
-            <div class="mt-4 text-slate-600 text-sm leading-relaxed">
-               <p class="${!isExpanded ? 'line-clamp-3' : ''}">
-                   ${publication.description}
-               </p>
-               <button onclick="togglePublication('${publication.title.replace(/'/g, "\\'")}')" class="text-blue-600 hover:text-blue-700 font-semibold mt-2 text-sm">
-                   ${isExpanded ? '...see less' : '...see more'}
-               </button>
-            </div>
-          `;
-        }
-
-        return `
-            <div class="bg-white p-6 rounded-xl border border-slate-200/80 shadow-md shadow-slate-200/60 transition-all duration-300 hover:shadow-xl hover:shadow-slate-300/60 hover:-translate-y-1">
-                <div class="flex flex-wrap items-center gap-2">
-                    <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full ${typeClass}">
-                        ${publication.type}
-                    </span>
-                    ${publication.ranking ? `<span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full ${rankingClass}">
-                        CORE Rank: ${publication.ranking}
-                    </span>` : ''}
-                    ${publication.status === 'Forthcoming' ? `<span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-700 bg-blue-100">
-                        Forthcoming
-                    </span>` : ''}
-                </div>
-
-                <h4 class="text-xl font-bold text-slate-800 mt-3">${publication.title}</h4>
-                <div class="text-sm text-slate-500 mt-2 space-y-1">
-                    <p><strong>Date:</strong> ${publication.date}</p>
-                    <p><strong>Published in:</strong> ${publication.publicationDetails}</p>
-                    ${publication.coAuthors ? `<p><strong>Co-authors:</strong> ${publication.coAuthors}</p>` : ''}
-                </div>
-                
-                ${descriptionHTML}
-                
-                <div class="mt-4 flex items-center justify-between">
-                     ${publication.citations ? `<span class="text-sm text-slate-400">${publication.citations}</span>` : '<div></div>'}
-                     ${publication.doi ? `
-                        <a 
-                            href="https://doi.org/${publication.doi}" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-slate-800 transition-colors"
-                        >
-                            View DOI
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                        </a>
-                     ` : ''}
-                </div>
-            </div>
-        `;
-      }
-
-      function Home() {
-        // Degrees Content
-        const degreesContent = `
-            <ul class="list-disc list-inside space-y-3 text-slate-600">
-                <li>PhD, Computer Science: AI|ML, University of Paul Sabatier, Toulouse, France, 12/2022</li>
-                <li>
-                    MSc, Intelligent Systems and Digital Content Engineering, University of La Rochelle, France, 06/2018
-                    <div class="mt-1 ml-4 flex flex-wrap gap-2">
-                        <span class="inline-block bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-1 rounded-full">Top 2% of graduating class (2/41) General</span>
-                        <span class="inline-block bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-1 rounded-full">Top 1% of graduating class (1/18) Research Stream</span>
-                    </div>
-                </li>
-                  <li>
-                    BSc, Mathematics, University of La Rochelle, France, 06/2016
-                    <div class="mt-1 ml-4">
-                        <span class="inline-block bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-1 rounded-full">Top 1% of graduating class (1/23)</span>
-                    </div>
-                </li>
-                <li>
-                    BSc, Computer Science, Ecole Superieure d'Infotronique d'Haiti, Port-au-Prince, Haiti, 06/2014
-                    <div class="mt-1 ml-4">
-                        <span class="inline-block bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-1 rounded-full">Top 1% of graduating class (2/76)</span>
-                    </div>
-                </li>
-            </ul>
-        `;
-
-        // Research Interests Content
-        const researchInterests = [ 'Machine Learning', 'Decision Systems', 'AI for Healthcare', 'Explainable AI', 'Responsible AI', 'Data Bias', 'Fairness & Transparency', 'Algorithm Fairness', 'Multi-Agent System', 'Gen AI'];
-        const interestsContent = `
-            <div class="flex flex-wrap gap-3">
-                ${researchInterests.map(interest => `
-                    <span class="bg-slate-100 text-blue-700 text-sm font-medium px-4 py-2 rounded-lg">${interest}</span>
-                `).join('')}
-            </div>
-        `;
-
-        // Professional Trips Content
-        const tripsContent = `
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                ${professionalTrips.map(trip => `
-                    <div class="flex items-center justify-between bg-slate-50/70 p-3 rounded-lg border border-slate-200/80 hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                      <div class="flex items-center min-w-0">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-blue-500 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-                          </svg>
-                          <div class="flex-grow min-w-0">
-                              <p class="font-bold text-slate-800 text-sm truncate">${trip.city}, <span class="font-medium text-slate-600">${trip.country}</span></p>
-                              ${trip.details ? `<p class="text-xs text-slate-500 -mt-0.5 truncate">${trip.details}</p>` : ''}
-                          </div>
-                      </div>
-                      <p class="text-xs text-slate-500 font-semibold whitespace-nowrap pl-3">${trip.date}</p>
-                    </div>
-                `).join('')}
-            </div>
-        `;
-
-        // Publications Content
-        const publicationsContent = `
-            <section>
-              ${SectionTitle('Research Outputs')}
-              <div class="space-y-6">
-                  ${publications.map(pub => PublicationCard(pub)).join('')}
-              </div>
-            </section>
-        `;
-
-        return `
-            <div class="animate-fade-in">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                    <main class="lg:col-span-2 space-y-12">
-                         <section>
-                            ${SectionTitle('About Me')}
-                            <div class="space-y-6 text-slate-600 leading-relaxed bg-white p-8 rounded-xl border border-slate-200/80 shadow-md shadow-slate-200/60 transition-all duration-300 hover:shadow-xl hover:shadow-slate-300/60 hover:-translate-y-1">
-                                <p>
-                                    I earned a Ph.D. in Computer Science from Paul Sabatier University in Toulouse, France, in 2022, specializing in Artificial Intelligence. Lecturer in Artificial Intelligence at RMIT University, I was previously affiliated with SogetiLabs within Capgemini in France, as an AI Research Scientist and with the Toulouse Institute for Computer Science Research (IRIT) at the University of Paul Sabatier.
-                                </p>
-                                <p>
-                                    My work explores machine learning, algorithm bias, fairness, explainability, and responsible AI, with experience across academia and industry in France, Spain, the U.S., and Vietnam.
-                                </p>
-                            </div>
-                        </section>
-                        
-                        <div class="space-y-8">
-                          ${AboutSection('Degrees', degreesContent)}
-                          ${AboutSection('Research Interests', interestsContent)}
-                          ${AboutSection('Professional Trips', tripsContent)}
-                        </div>
-
-                        ${publicationsContent}
-                    </main>
-
-                    <aside class="lg:col-span-1">
-                        ${InfoCard()}
-                    </aside>
-                </div>
-            </div>
-        `;
-      }
-
-      function ProfessionalExperience() {
-        const experienceItems = professionalExperience.map(item => {
-          const detailsList = item.details ? `
-            <ul class="list-disc list-inside space-y-1 text-slate-500 text-sm mt-3">
-              ${item.details.map(detail => `<li>${detail}</li>`).join('')}
-            </ul>
-          ` : '';
-
-          return `
-            <div class="timeline-item pb-10">
-              <div class="timeline-dot"></div>
-              <div class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-md shadow-slate-200/60 transition-all duration-300 hover:shadow-lg hover:shadow-slate-300/60 hover:-translate-y-1">
-                <div class="flex justify-between items-start mb-2">
-                  <h3 class="text-xl font-bold text-blue-700">${item.title}</h3>
-                  <span class="text-sm text-slate-500 font-medium">${item.date}</span>
-                </div>
-                <p class="text-lg font-semibold text-slate-800">${item.institution}</p>
-                <p class="text-sm text-slate-500 mb-4">${item.location}</p>
-                <p class="text-slate-600 leading-relaxed">${item.description}</p>
-                ${detailsList}
-              </div>
-            </div>
-          `;
-        }).join('');
-
-        return `
-            <div class="animate-fade-in">
-              <div class="text-center mb-12">
-                  <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight sm:text-5xl">
-                      Professional Experience
-                  </h1>
-                  <p class="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">
-                      A timeline of my professional journey, bridging academia, research, and industry across multiple countries.
-                  </p>
-              </div>
-              <div class="max-w-3xl mx-auto pt-4">
-                ${experienceItems}
-              </div>
-            </div>
-        `;
-      }
-
-      function CourseCard(course, index) {
-        const universities = Array.isArray(course.university) ? course.university : [course.university];
-        const hasModules = course.modules && course.modules.length > 0;
-        const isOpen = hasModules && openCourseIndex === index;
-        
-        const universityTags = universities.map(uni => `
-            <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full ${getUniversityTagClass(uni)}">
-                ${uni}
-            </span>
-        `).join('');
-
-        const modulesContent = hasModules ? `
-            <div class="p-6 border-t border-slate-200">
-            <h4 class="text-md font-semibold text-slate-700 mb-4">Topics Covered</h4>
-            <ul class="list-disc list-inside space-y-2 text-slate-600 text-sm">
-                ${course.modules.map(module => `<li>${module}</li>`).join('')}
-            </ul>
-            </div>
-        ` : '';
-
-        return `
-            <div class="bg-white border border-slate-200/80 rounded-xl shadow-md shadow-slate-200/60 transition-all duration-300 hover:shadow-lg hover:shadow-slate-300/60 hover:-translate-y-1">
-              <button
-                onclick="${hasModules ? `toggleCourse(${index})` : ''}"
-                class="w-full p-6 text-left flex justify-between items-center ${!hasModules ? 'cursor-default' : ''}"
-                aria-expanded="${hasModules ? isOpen : false}"
-              >
-                <div>
-                    <div class="flex flex-wrap items-center gap-2 mb-2">
-                        <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full ${course.level === 'Postgraduate' ? 'text-purple-700 bg-purple-100' : 'text-green-700 bg-green-100'}">
-                            ${course.level}
-                        </span>
-                        ${universityTags}
-                    </div>
-                  <h3 class="text-xl font-bold text-slate-800 mt-2">${course.title}</h3>
-                  <p class="text-slate-600 text-sm mt-1">${course.description}</p>
-                </div>
-                ${hasModules ? `
-                    <svg
-                      class="w-6 h-6 text-slate-500 transform transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                ` : ''}
-              </button>
-              <div class="overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[1000px]' : 'max-h-0'}">
-                ${modulesContent}
-              </div>
-            </div>
-        `;
-      }
-
-      function Teaching() {
-        return `
-            <div class="animate-fade-in">
-                <div class="text-center mb-12">
-                    <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight sm:text-5xl">
-                        Teaching Portfolio
-                    </h1>
-                    <p class="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">
-                        A list of courses that I have designed and delivered, blending theory with buildable projects, clear outcomes, and strong feedback loops.
-                    </p>
-                </div>
-                <div class="space-y-6">
-                    ${coursesData.map((course, index) => CourseCard(course, index)).join('')}
-                </div>
-            </div>
-        `;
-      }
+      const professionalExperience = [
+        {
+          title: 'Lecturer in Artificial Intelligence',
+          institution: 'RMIT University',
+          location: 'HCMC, Vietnam',
+          date: '2023 – Present',
+          description: 'Teaching and research in Artificial Intelligence.',
+          details: [],
+        },
+        {
+          title: 'AI Research Scientist',
+          institution: 'SogetiLabs, Capgemini',
+          location: 'Toulouse, France',
+          date: '2023',
+          description: 'Research and development in AI.',
+          details: [],
+        },
+        {
+          title: 'AI Software Engineer R&D',
+          institution: 'Financial Deep Mind',
+          location: 'Hanoi, Vietnam',
+          date: '2019',
+          description: 'R&D in AI Software Engineering.',
+          details: [],
+        },
+        {
+          title: 'Remote ML Software Engineer',
+          institution: 'SofPoint Consultores',
+          location: 'Madrid, Spain',
+          date: '2018',
+          description: 'Remote Machine Learning Software Engineering.',
+          details: [],
+        },
+        {
+          title: 'ML R&D Engineer',
+          institution: 'French National Institute of Genomics Center',
+          location: 'Toulouse, France',
+          date: '2017',
+          description: 'Machine Learning Research and Development.',
+          details: [],
+        },
+        {
+          title: 'IT System Analyst',
+          institution: 'Libral Capital US',
+          location: 'New York, USA',
+          date: '2014',
+          description: 'Information Technology System Analysis.',
+          details: [],
+        },
+        {
+          title: 'IT Manager Assistant',
+          institution: 'Haitian Education and Leadership Program',
+          location: 'Port-au-Prince, Haiti',
+          date: '2013',
+          description: 'Assisted IT Manager duties.',
+          details: [],
+        },
+        {
+          title: 'Remote Software Embedded Engineer',
+          institution: 'Toyota',
+          location: 'Texas, USA',
+          date: '2013', // Assuming a concurrent or preceding role in this timeframe
+          description: 'Remote Software Embedded Engineering.',
+          details: [],
+        }
+      ];
+      
+      const publications = [
+        {
+          type: 'CONFERENCE PAPER',
+          title: 'BALM: A Bias-Aware Framework to Mitigate Homogeneity and Premise-Acceptance Biases in LLMs',
+          date: 'Dec 2025',
+          publicationDetails: 'ACM/IEEE Joint Conference on Digital Libraries (JCDL)',
+          coAuthors: 'Dorleon G, et al.',
+          doi: '',
+          description: 'Large Language Models (LLMs) generate fluent text but often reproduce and amplify societal biases from their training data. In workplace and social contexts, we find two recurring failures: models frequently accept biased premises instead of reframing them, and they portray marginalized groups with less variety than majority groups, a homogeneity bias that flattens individuality. Existing alignment reduces overt toxicity yet leaves these subtler patterns largely intact. To address this problem, we introduce BALM, a bias-aware generation framework that inserts a lightweight detector into decoding, triggers a concise bias instruction when needed, and applies mild diversity control in group-focused outputs. Across seven systems and a series of prompt biased testbed with neutral controls, BALM increases the rate at which responses challenge biased premises by 29 points over a strong baseline and lowers the homogeneity gap to +0.02, while maintaining accuracy and helpfulness on neutral inputs. The detector attains up to 3x higher bias-detection accuracy than baselines. These results show that targeted, deployment-ready interventions can improve fairness without sacrificing fluency or requiring full retraining. Beyond the constructed testbed, BALM also generalizes to public benchmarks including StereoSet and BBQ, where it reduces stereotypical defaults by 12–20 points while preserving factual accuracy.',
+          status: 'Forthcoming',
+          ranking: 'A*',
+        },
+        {
+          type: 'CONFERENCE PAPER',
+          title: 'PrefixGuard LLMs: Hate Speech and Sexism Detection',
+          date: 'Dec 2025',
+          publicationDetails: 'ACM/IEEE Joint Conference on Digital Libraries (JCDL)',
+          coAuthors: 'Dorleon G, et al.',
+          doi: '',
+          description: 'Detecting hate speech and sexism on online platforms remains challenging because such content is often subtle and highly dependent on context. Large Language Models (LLMs) provide strong text representations for this task, but fully fine-tuning them is computationally expensive and can reinforce existing social biases. To address these limitations, we propose PrefixGuard — a parameter-efficient approach based on prefix tuning. Instead of updating all model weights, PrefixGuard learns small trainable prefix vectors at each Transformer layer and adds a lightweight classification head, while keeping the LLM backbone frozen. We formally define this method for text classification and analyze how it reshapes internal representations of biased or offensive language. Experiments on three benchmark datasets EDOS (sexism), OLID (offense), and HatEval (hate toward women and immigrants) show that PrefixGuard consistently outperforms BERT and RoBERTa baselines and reaches performance competitive with full fine-tuning, while training less than 1% of parameters. Additional analysis shows that PrefixGuard improves group-level fairness on HatEval, remains robust to adversarial text obfuscation, and produces better-calibrated probability outputs. These results highlight PrefixGuard as a practical, resource-efficient, and effective alternative to full fine-tuning for hate speech and sexism detection in real-world moderation systems.',
+          status: 'Forthcoming',
+          ranking: 'A*',
+        },
+        {
+          type: 'CONFERENCE PAPER',
+          title: 'ASAP: Constant-Factor Proportional Fairness via Learning-Augmented Online Allocation',
+          date: 'Dec 2025',
+          publicationDetails: 'IEEE International Conference on Data Mining (ICDM)',
+          coAuthors: 'Dorleon G, et al.',
+          doi: '',
+          description: 'This paper introduces ASAP, a novel learning-augmented online allocation algorithm that achieves constant-factor proportional fairness. We address the challenge of making fair decisions in real-time environments with uncertain inputs by integrating machine learning predictions to guide a robust online framework.',
+          status: 'Forthcoming',
+          ranking: 'A*',
+        },
+        {
+          type: 'CONFERENCE PAPER',
+          title: 'How LLMs Handle Cultural Bias: Reactions to Asian Minority Historical Narratives',
+          date: 'Nov 2025',
+          publicationDetails: 'International Conference on Asia-Pacific Digital Libraries (ICADL)',
+          coAuthors: 'Dorleon G, et al.',
+          doi: '',
+          description: 'This study investigates the performance of large language models (LLMs) when processing and generating content related to historical narratives of Asian minority groups. We analyze the models for cultural biases and stereotypes, providing a critical assessment of their ability to handle sensitive and nuanced cultural information.',
+          status: 'Forthcoming',
+          ranking: 'A',
+        },
+        {
+          type: 'CONFERENCE PAPER',
+          title: 'Uncovering Cultural Biases and Stereotypes in Large Language Models',
+          date: 'Nov 2025',
+          publicationDetails: 'International Conference on Asia-Pacific Digital Libraries (ICADL)',
+          coAuthors: 'Dorleon G, et al.',
+          doi: '',
+          description: 'A comprehensive analysis of cultural biases embedded in prominent large language models. This research employs a novel framework to systematically uncover and quantify stereotypes across different cultures, offering insights for developing more equitable and culturally aware AI systems.',
+          status: 'Forthcoming',
+          ranking: 'A',
+        },
+        {
+          type: 'CONFERENCE PAPER',
+          title: 'Can Image Generative Models Be Considered Experts?',
+          date: '26 Apr 2025',
+          publicationDetails: 'Information and Communication Technology, pp. 406-417, Springer, Singapore',
+          coAuthors: 'Ba Hai Quang D, Dorleon G',
+          doi: '10.1007/978-981-96-4291-5_33',
+          description: 'This paper addresses foundational challenges in evaluating Generative Artificial Intelligence (GAI), focusing on the transition from expertise evaluation to intelligence evaluation. It critiques both quantitative and qualitative metrics for GAI, highlighting limitations in human-algorithm interaction environments. The study examines knowledge representation in neural network architectures and the processes of filtering versus tokenisation for image processing, emphasising inconsistencies and lack of standardisation in test design. Based on this finding the paper proposes a framework for future research to further explore the research questions.'
+        },
+        {
+          type: 'CONFERENCE PAPER',
+          title: 'FIEAP: A Machine Learning Approach for Fair and Interpretable Employee Attrition Prediction',
+          date: '2025',
+          publicationDetails: 'Information Integration and Web Intelligence, Lecture Notes in Computer Science, 15342:198-211, Springer Nature',
+          coAuthors: 'Dorleon G',
+          doi: '10.1007/978-3-031-78090-5_17',
+          description: 'In the current competitive job market, industries are confronting significant hurdles with employee attrition and notable turnover rates. To address these pressing concerns, organizations are progressively leveraging artificial intelligence (AI) to forecast employee attrition and deploy efficient retention strategies. Many existing machine learning approaches have tried to predict employee attrition rate across diverse organizations. However, we notice that they have limited ability to deal with fairness and interpretability while predicting employee attrition rate.To address this disparity, we present FIEAP in this paper, an interpretable machine learning method designed for fair prediction of employee attrition. Our approach employs ensemble learning with a stacking strategy, incorporating four distinct machine learning algorithms. To ensure fairness and enhance interpretability, we integrate LIME (Local Interpretable Model-Agnostic Explanations).We evaluate the proposed approach using a real-life dataset from CPC HR Employee Analytic and report on its performance in terms of prediction accuracy, fairness metrics, and feature importance. The results demonstrate the potential of our approach to provide clear explanations while maintaining fairness in attrition prediction.',
+          citations: '11 citation on Dimensions.',
+          ranking: 'B',
+        },
+          {
+          type: 'CONFERENCE PAPER',
+          title: 'Optimizing Elevator Performance with SARL Multi-Agent Systems: A Distributed Approach for Enhanced Responsiveness and Efficiency',
+          date: '1 Jan 2025',
+          publicationDetails: 'Proceedings of the 17th International Conference on Agents and Artificial Intelligence, pp. 158-165, INSTICC',
+          coAuthors: 'Le V, Joegensen O, Nguyen T...2 more',
+          doi: '10.5220/0013098400003890',
+          description: '',
+          ranking: 'B',
+        },
+        {
+          type: 'BOOK CHAPTER',
+          title: 'FAPFID: A Fairness-Aware Approach for Protected Features and Imbalanced Data',
+          date: '2023',
+          publicationDetails: 'Lecture Notes in Computer Science, pp. 107-125, Springer',
+          coAuthors: 'Dorleon G, Megdiche I, Bricon-Souf N...3 more',
+          doi: '10.1007/978-3-662-66863-4_5',
+          description: 'The use of automated decision-making based on machine learning algorithms has raised concerns about potential discrimination against minority group defined by protected features such as gender, race, etc. Particularly, in some areas with high social impact such as justice, job search or healthcare, it has been observed that using protected feature in machine learning algorithms can lead to unfair decisions that favor one group (privileged) over another group (unprivileged). In order to improve fairness in decision-making with regard to protected features, many machine learning approaches focus either on discarding the protected features or maintaining an overall accuracy performance for both unprivileged and privileged groups. However, we notice that these approaches have limited efficiency in the case where the protected features are useful for the learning model or when dealing with imbalanced data.To overcome this limitation when dealing with such issues, we propose in this work FAPFID, a fairness-aware strategy based on the use of balanced and stable clusters. To do this, we divide our input data into stable clusters (subgroups) while ensuring that privileged and unprivileged groups are fairly represented in each cluster. Experiments on three real-world and biased datasets demonstrated that our proposed method outperforms state-of-the-art fairness-aware methods under comparison in terms of performance and fairness scores.',
+          citations: '11 citation on Dimensions.'
+        },
+        {
+          type: 'CONFERENCE PAPER',
+          title: 'Feature selection under fairness constraints',
+          date: '25 Apr 2022',
+          publicationDetails: 'Proceedings of the 37th ACM/SIGAPP Symposium on Applied Computing, pp. 1125-1127, Association for Computing Machinery (ACM)',
+          coAuthors: 'Dorleon G, Megdiche I, Bricon-Souf N...1 more',
+          doi: '10.1145/3477314.3507168',
+          description: 'Learning from large dimensional data presents major challenges related to the size of the data. Thus, dimensionality reduction techniques such as feature selection are brought in to reduce computation time, improve prediction performance, and better understand the data. However, two problems can occur with current feature selection methods when protected features are considered. The presence of protected features among the selected ones which often lead to unfair results and the presence of redundant features which carry potentially the same information with the protected ones. By protected features we mean features on which it is important to not have bias due to data imbalances. In view of such issues, we introduce a fair feature selection method that takes into account the existence of protected features and their redundant. Our new method finds a set of relevant features with no protected features with the least possible redundancy under prediction quality constraint. This constraint consists of a trade-off between fairness and prediction performance. Below, we outline the strategy of our trade-off approach.',
+          citations: '33 total citations on Dimensions.',
+          ranking: 'B',
+        },
+        {
+          type: 'CONFERENCE PAPER',
+          title: 'Feature Selection Under Fairness and Performance Constraints',
+          date: '2022',
+          publicationDetails: 'Big Data Analytics and Knowledge Discovery, Lecture Notes in Computer Science, 13428:125-130, Springer Nature',
+          coAuthors: 'Dorleon G, Megdiche I, Bricon-Souf N...1 more',
+          doi: '10.1007/978-3-031-12670-3_11',
+          description: 'Feature selection is an essential preprocessing procedure in data analysis. The process refers to selecting a subset of relevant features to improve prediction performance and better understand the data. However, we notice that traditional feature selection methods have limited ability to deal with data distribution over protected features due to data imbalance and indeed protected features are selected. Two problems can occur with current feature selection methods when protected features are considered: the presence of protected features among the selected ones which often lead to unfair results and the presence of redundant features which carry potentially the same information with the protected ones. To address these issues, we introduce in this paper a fair feature selection method that takes into account the existence of protected features and their redundant. Our new method finds a set of relevant features with no protected features and with the least possible redundancy under prediction quality constraint. This constraint consists of a trade-off between fairness and prediction performance. Our experiments on well-known biased datasets from the literature demonstrated that our proposed method outperformed the traditional feature selection methods under comparison in terms of performance and fairness.',
+          citations: '55 total citations on Dimensions.',
+          ranking: 'B',
+        },
+        {
+          type: 'CONFERENCE PAPER',
+          title: 'Absolute Redundancy Analysis Based on Features Selection',
+          date: '23 Jul 2021',
+          publicationDetails: '2021 4th International Conference on Data Science and Information Technology, pp. 458-461, Association for Computing Machinery (ACM)',
+          coAuthors: 'Dorleon G, Bricon-Souf N, Megdiche I...1 more',
+          doi: '10.1145/3478905.3479002',
+          description: 'The goal of feature selection (FS) in machine learning is to find the best subset of features to create efficient models for a learning task. Different FS methods are then used to assess features relevancy. An efficient feature selection method should be able to select relevant and non-redundant features in order to improve learning performance and training efficiency on large data. However in the case of non-independents features, we saw existing features selection methods inappropriately remove redundancy which leads to performance loss. We propose in this article a new criteria for feature redundancy analysis. Using our proposed criteria, we then design an efficient features redundancy analysis method to eliminate redundant features and optimize the performance of a classifier. We experimentally compare the efficiency and performance of our method against other existing methods which may remove redundant features. The results obtained show that our method is effective in maximizing performance while reducing redundancy.',
+          citations: '33 total citations on Dimensions.',
+          ranking: 'C',
+        },
+        {
+          type: 'CONFERENCE PAPER',
+          title: 'Qualification of data bias in the data science process',
+          date: '1 Jan 2021',
+          publicationDetails: 'Extraction Et Gestion Des Connaissances Egc 2021, pp. 515-516',
+          coAuthors: 'Dorleon G, Bricon-Souf N, Megdiche I...1 more',
+          doi: '',
+          description: '',
+          ranking: 'C',
+        }
+      ];
 
 
-      // -------------------------------------------------------------------
-      // 4. MAIN APP LOGIC
-      // -------------------------------------------------------------------
+      // -------------------------------------------------------------------
+      // 2. STATE AND UTILITIES
+      // -------------------------------------------------------------------
 
-      function renderContent() {
-        switch (activeView) {
-          case views.PROFESSIONAL_EXPERIENCE:
-            return ProfessionalExperience();
-          case views.TEACHING:
-            return Teaching();
-          case views.HOME:
-          default:
-            return Home();
-        }
-      }
+      let activeView = views.HOME;
+      let expandedPublication = null;
+      // Default to the first course with modules
+      const firstCourseWithModulesIndex = coursesData.findIndex(c => c.modules && c.modules.length > 0);
+      let openCourseIndex = firstCourseWithModulesIndex !== -1 ? firstCourseWithModulesIndex : 0; 
+      
+      const root = document.getElementById('root');
 
-      function Footer() {
-        return `
-            <footer class="text-center py-6 text-slate-500/80 text-sm">
-                <p>&copy; ${new Date().getFullYear()} Dr. Ginel Dorleon. All rights reserved.</p>
-            </footer>
-        `;
-      }
+      function getRankingClass(ranking) {
+        switch (ranking) {
+            case 'A*': return 'text-red-800 bg-red-100';
+            case 'A': return 'text-violet-800 bg-violet-100';
+            case 'B': return 'text-sky-800 bg-sky-100';
+            case 'C': return 'text-slate-600 bg-slate-100';
+            default: return '';
+        }
+      }
 
-      function renderApp() {
-        root.innerHTML = `
-            ${Header()}
-            <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
-                ${renderContent()}
-            </main>
-            ${Footer()}
-        `;
-      }
+      function getUniversityTagClass(uni) {
+        switch (uni) {
+            case 'RMIT University':
+                return 'text-red-800 bg-red-100';
+            case 'University of Paul Sabatier Toulouse':
+                return 'text-indigo-800 bg-indigo-100';
+            default:
+                return 'text-slate-600 bg-slate-100';
+        }
+      }
 
-      // Initial render
-      window.onload = renderApp;
-    </script>
-  </body>
-</html>
+      function setActiveView(view) {
+        activeView = view;
+        expandedPublication = null;
+        openCourseIndex = firstCourseWithModulesIndex !== -1 ? firstCourseWithModulesIndex : 0; // Reset default open course
+        renderApp();
+      }
+
+      function togglePublication(title) {
+        expandedPublication = expandedPublication === title ? null : title;
+        renderApp();
+      }
+      
+      function toggleCourse(index) {
+          openCourseIndex = openCourseIndex === index ? null : index;
+          renderApp();
+      }
+      
+      // -------------------------------------------------------------------
+      // 3. COMPONENTS (Render Functions)
+      // -------------------------------------------------------------------
+
+      function NavItem(label, view) {
+        const isActive = activeView === view;
+        return `
+          <button
+            onclick="setActiveView('${view}')"
+            class="relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${isActive ? 'bg-blue-100 text-blue-700' : 'text-slate-600 hover:bg-slate-100'}"
+          >
+            ${label}
+          </button>
+        `;
+      }
+
+      function Header() {
+        return `
+          <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-lg shadow-slate-200/50">
+            <nav class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+              <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                  <h1 class="text-xl font-bold text-slate-800">Dr. Ginel Dorleon</h1>
+                </div>
+                <div class="flex items-baseline space-x-2">
+                  ${NavItem("Home", views.HOME)}
+                  ${NavItem("Professional Experience", views.PROFESSIONAL_EXPERIENCE)}
+                  ${NavItem("Teaching", views.TEACHING)}
+                </div>
+              </div>
+            </nav>
+          </header>
+        `;
+      }
+
+      function SectionTitle(title, className = '') {
+        return `
+          <h2 cl
