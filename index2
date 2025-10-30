@@ -1,1 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dr. Ginel Dorleon - Personal Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+  --bg: #f9f9f9;
+  --text: #333;
+  --header-bg: linear-gradient(135deg, #3b5998, #1c2b5a);
+  --card-bg: #fff;
+	}
+
+	body.dark {
+  --bg: #1e1e1e;
+  --text: #f0f0f0;
+  --header-bg: linear-gradient(135deg, #000, #222);
+  --card-bg: #2c2c2c;
+	}
+
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px 20px;
+      background: var(--header-bg);
+      color: white;
+      position: relative;
+    }
+
+    header img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.1em;
+      max-width: 700px;
+      margin: 10px auto 0;
+    }
+
+    .switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: inline-block;
+      width: 50px;
+      height: 28px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      background-color: #ccc;
+      border-radius: 34px;
+      height: 100%;
+      width: 100%;
+      transition: background-color 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slider svg {
+      width: 18px;
+      height: 18px;
+      fill: white;
+      transition: transform 0.3s ease;
+    }
+
+    input:checked + .slider {
+      background-color: #4f8df7;
+    }
+
+    input:checked + .slider svg {
+      transform: rotate(360deg);
+    }
+
+    main {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    section {
+      margin-bottom: 40px;
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      color: var(--text);
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
+    }
+
+    ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 10px 0;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.9em;
+      background: #eee;
+      color: #666;
+    }
+
+    body.dark .footer {
+      background: #111;
+      color: #aaa;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+    }
+    #view-counter {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--card-bg);
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 0.9em;
+  z-index: 1000;
+}
+  </style>
+</head>
+<body>
+
+  <header>
+    <label class="switch">
+      <input type="checkbox" id="themeToggle" />
+      <span class="slider">
+        <svg viewBox="0 0 24 24" class="checkmark">
+          <path d="M9 16.17l-3.88-3.88-1.41 1.41L9 19 20.29 7.71l-1.41-1.41z" />
+        </svg>
+      </span>
+    </label>
+    <img src="gith.png" alt="Profile Photo" />
+    <h1>Dr. Ginel Dorleon</h1>
+    <p>Ginel is a Lecturer, an AI Research Scientist with a Ph.D. Computer Science | Artificial Intelligence from Paul Sabatier University, France. His work explores machine learning, algorithm bias, fairness, explainability, and responsible AI, with experience across academia and industry in France, Spain, the U.S., and Vietnam.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Degrees</h2>
+      <ul>
+        <li>PhD, Computer Science: AI|ML, University of Paul Sabatier, Toulouse, France, 12/2022</li>
+        <li>Masters Degree, Intelligent Systems and Digital Content Engineering, University of La Rochelle, 06/2018</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Places I Have Worked</h2>
+      <ul>
+        <li>RMIT University, HCMC, Vietnam – 2023</li>
+        <li>SogetiLabs, Capgemini, Toulouse, France – 2023, AI Research Scientist</li>
+        <li>Financial Deep Mind, Hanoi, Vietnam – 2019, AI Software Engineer R&D </li>
+        <li>SofPoint Consultores, Madrid, Spain – 2018, Remote ML Software Engineer</li>
+        <li>French National Institute of Genomics Center, Toulouse, France – 2017, ML R&D Engineer</li>
+        <li>Libral Capital US, New York, USA – 2014, IT System Analyst</li>
+        <li>Toyota, Texas, USA – 2012, Remote Software Embedded Engineer</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Latest Research Publications</h2>
+      <ul>
+        <li>"Uncovering Cultural Biases and Stereotypes in Large Language Models", ICADL, 2025</li>
+		<li>"How LLMs Handle Cultural Bias: Reactions to Asian Minority Historical Narratives", ICADL, 2025</li>
+		<li>"Can Image Generative Models Be Considered Experts?", SOICT, 2025</li>
+        <li>"FIEAP: A Machine Learning Approach for Fair and Interpretable Employee Attrition Prediction", iiWAS, 2025</li>
+        <li>"Optimizing Elevator Performance with SARL Multi-Agent Systems", ICAART, 2025</li>
+        <li>"FAPFID: A Fairness-Aware Approach for Protected Features and Imbalanced Data", TLDKS, 2023</li>
+        <li>"Feature selection under fairness constraints", ACM SAC, 2022</li>
+        <li>"Feature Selection Under Fairness and Performance Constraints", DaWAK, 2022</li>
+        <li>"Absolute Redundancy Analysis Based on Feature Selection", ACM DSIT 2021</li>
+        <li>"Feature Selection-Based Redundancy Analysis", ACM KDD 2021</li>
+        <li>"Qualification of Data Bias in the Data Science Process", EGC, 2021</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Professional Trips</h2>
+      <ul>
+        <li>Australia, Melbourne, April 2025</li>
+        <li>Portugal, Porto, February 2025</li>
+        <li>Slovakia, Bratislava, December 2024</li>
+        <li>USA, Oregon, October 2024</li>
+        <li>Qatar, Doha, September 2024</li>
+        <li>Austria, Vienna, June 2024, June 2023</li>
+        <li>Germany, Berlin, May 2023</li>
+        <li>France, Paris, Toulouse, Castres, La Rochelle, Bordeaux – 2019, 2020</li>
+        <li>Taiwan, Taipei, July 2019</li>
+        <li>Spain, Madrid, August 2018</li>
+        <li>Singapore, Singapore, May 2018</li>
+        <li>USA, New York, May–September 2014</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Teaching</h2>
+      <ul>
+        <li>Advanced Programming for Data Science</li>
+        <li>Algorithms and Data Structures</li>
+        <li>Programming Autonomous Robots</li>
+        <li>Intelligent Decision Making</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Research Interests</h2>
+      <ul>
+        <li>#Machine Learning, #AI for Healthcare, #Explainable AI</li>
+        <li>#Responsible AI/GenAI, #Algorithm Bias, #Fairness & Transparency</li>
+        <li>#Multi-Agent Systems, #Decision Systems</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Awards and Scholarships</h2>
+      <ul>
+        <li>Doctoral Excellence Award, Doctoral School of Computer Science and Mathematics, Toulouse, 2020</li>
+        <li>French Government Excellence Scholarship (Master’s), 2016</li>
+      </ul>
+    </section>
+  </main>
+
+  <div class="footer">
+    &copy; 2025 GD - Hosted by GitHub Pages.
+  </div>
+
+  <script>
+    const body = document.body;
+    const toggle = document.getElementById('themeToggle');
+
+    function applyTheme(isDark) {
+      body.classList.toggle('dark', isDark);
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      toggle.checked = isDark;
+    }
+
+    toggle.addEventListener('change', () => {
+      applyTheme(toggle.checked);
+    });
+
+    (function () {
+      const isDark = localStorage.getItem('theme') === 'dark';
+      applyTheme(isDark);
+    })();
+  </script>
+	<script>
+  const NAMESPACE = 'youarelogic';
+  const KEY       = 'gg300';
+  const counterEl = document.getElementById('count');
+
+  fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${KEY}`)
+    .then(res => res.json())
+    .then(data => {
+      counterEl.textContent = data.value;
+    })
+    .catch(err => {
+      console.error('CounterAPI error:', err);
+      counterEl.textContent = 'n/a';
+    });
+</script>
+
+<div id="view-counter">
+  👁️ Views <span id="count">…</span>
+</div>
+
+</body>
+</html>
 
