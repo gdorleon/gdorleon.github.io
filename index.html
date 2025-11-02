@@ -276,15 +276,16 @@
       const publications = [
         {
           type: 'CONFERENCE PAPER',
-          title: 'BALM: Bias-Aware Generation for Large Language Models',
+          title: 'Detecting Framing Bias in News via Probabilistic Graphical Modeling',
           date: 'Dec 2025',
           publicationDetails: 'ACM/IEEE Joint Conference on Digital Libraries (JCDL)',
           coAuthors: 'Dorleon G. and Shujaa S.',
           doi: '',
-          description: 'Large Language Models (LLMs) generate fluent text but often reproduce and amplify societal biases from their training data. In workplace and social contexts, we find two recurring failures: models frequently accept biased premises instead of reframing them, and they portray marginalized groups with less variety than majority groups, a homogeneity bias that flattens individuality. Existing alignment reduces overt toxicity yet leaves these subtler patterns largely intact. To address this problem, we introduce BALM, a bias-aware generation framework that inserts a lightweight detector into decoding, triggers a concise bias instruction when needed, and applies mild diversity control in group-focused outputs. Across seven systems and a series of prompt biased testbed with neutral controls, BALM increases the rate at which responses challenge biased premises by 29 points over a strong baseline and lowers the homogeneity gap to +0.02, while maintaining accuracy and helpfulness on neutral inputs. The detector attains up to 3x higher bias-detection accuracy than baselines. These results show that targeted, deployment-ready interventions can improve fairness without sacrificing fluency or requiring full retraining. Beyond the constructed testbed, BALM also generalizes to public benchmarks including StereoSet and BBQ, where it reduces stereotypical defaults by 12–20 points while preserving factual accuracy.',
+          description: 'Framing bias in news is a subtle yet impactful form of media bias where journalists shape narratives through selective wording and emphasis. Detecting it automatically is difficult since it demands more than recognizing explicit partisan markers. This paper introduces a probabilistic graphical modeling approach for framing bias detection in news text. Unlike recent large language model-based methods that rely on reasoning prompts, our system uses a Conditional Random Field (CRF) to capture linguistic and structural indicators of framing across sentences. We formalize the task on the Media Bias Identification Benchmark (MBIB) and detail the mathematical foundation of our model. Experiments on MBIB show that our CRF-based method surpasses fine-tuned BERT and ConvBERT baselines in F1-score, demonstrating better sensitivity to nuanced framing strategies. Ablation studies confirm the importance of lexical bias features and cross-sentence dependencies, and qualitative analysis highlights interpretable model behavior. This work underscores the strength of structured probabilistic models in bias detection and moves toward more transparent, multi-faceted approaches to news analysis.',
           status: 'Forthcoming',
           ranking: 'A*',
-        },
+          },
+
         {
           type: 'CONFERENCE PAPER',
           title: 'PrefixGuard LLMs: Hate Speech and Sexism Detection',
