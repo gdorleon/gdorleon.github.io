@@ -55,7 +55,7 @@
 
     <script>
       // -------------------------------------------------------------------
-      // 1. DATA AND CONSTANTS (Updated with your new publications list)
+      // 1. DATA AND CONSTANTS
       // -------------------------------------------------------------------
       
       const views = {
@@ -265,7 +265,40 @@
         },
       ];
       
+      // Each publication may have a `link` (direct URL) and/or a `doi`.
+      // The "View more" button uses `link` first, then falls back to the DOI.
       const publications = [
+        {
+          type: 'JOURNAL ARTICLE',
+          title: 'Hierarchical fairness-aware re-ranking for recommender systems',
+          date: '2026',
+          publicationDetails: 'Expert Systems with Applications, Elsevier',
+          coAuthors: 'Dorleon G, Shujaa S',
+          doi: '',
+          link: 'https://www.sciencedirect.com/science/article/pii/S0957417426026801',
+          description: '',
+        },
+        {
+          type: 'CONFERENCE PAPER',
+          title: 'BALM: Bias-Aware Generation for Large Language Models',
+          date: '2026',
+          publicationDetails: 'International Conference on Big Data Analytics and Knowledge Discovery (DaWaK), Springer',
+          coAuthors: 'Dorleon G, Shujaa S',
+          doi: '',
+          link: 'https://link.springer.com/chapter/10.1007/978-3-032-34896-8_2',
+          description: '',
+        },
+        {
+          type: 'CONFERENCE PAPER',
+          title: 'PrefixGuard: Lightweight LLMs for Hate Speech and Sexism Detection',
+          date: '2026',
+          publicationDetails: '2026 International Joint Conference on Neural Networks (IJCNN), IEEE',
+          coAuthors: 'Dorleon G, Shujaa S',
+          doi: '',
+          link: 'https://ieeexplore.ieee.org/abstract/document/11729560/',
+          description: 'Detecting hate speech and sexism on online platforms remains challenging because such content is often subtle and highly dependent on context. Large Language Models (LLMs) provide strong text representations for this task, but fully fine-tuning them is computationally expensive and can reinforce existing social biases. To address these limitations, we propose PrefixGuard — a parameter-efficient approach based on prefix tuning. Instead of updating all model weights, PrefixGuard learns small trainable prefix vectors at each Transformer layer and adds a lightweight classification head, while keeping the LLM backbone frozen. We formally define this method for text classification and analyze how it reshapes internal representations of biased or offensive language. Experiments on three benchmark datasets EDOS (sexism), OLID (offense), and HatEval (hate toward women and immigrants) show that PrefixGuard consistently outperforms BERT and RoBERTa baselines and reaches performance competitive with full fine-tuning, while training less than 1% of parameters. Additional analysis shows that PrefixGuard improves group-level fairness on HatEval, remains robust to adversarial text obfuscation, and produces better-calibrated probability outputs. These results highlight PrefixGuard as a practical, resource-efficient, and effective alternative to full fine-tuning for hate speech and sexism detection in real-world moderation systems.',
+          ranking: 'A',
+        },
         {
           type: 'CONFERENCE PAPER',
           title: 'Detecting Framing Bias in News via Probabilistic Graphical Modeling',
@@ -273,20 +306,8 @@
           publicationDetails: 'ACM/IEEE Joint Conference on Digital Libraries (JCDL)',
           coAuthors: '',
           doi: '',
+          link: '',
           description: 'Framing bias in news is a subtle yet impactful form of media bias where journalists shape narratives through selective wording and emphasis. Detecting it automatically is difficult since it demands more than recognizing explicit partisan markers. This paper introduces a probabilistic graphical modeling approach for framing bias detection in news text. Unlike recent large language model-based methods that rely on reasoning prompts, our system uses a Conditional Random Field (CRF) to capture linguistic and structural indicators of framing across sentences. We formalize the task on the Media Bias Identification Benchmark (MBIB) and detail the mathematical foundation of our model. Experiments on MBIB show that our CRF-based method surpasses fine-tuned BERT and ConvBERT baselines in F1-score, demonstrating better sensitivity to nuanced framing strategies. Ablation studies confirm the importance of lexical bias features and cross-sentence dependencies, and qualitative analysis highlights interpretable model behavior. This work underscores the strength of structured probabilistic models in bias detection and moves toward more transparent, multi-faceted approaches to news analysis.',
-          status: 'Forthcoming',
-          ranking: 'A*',
-          },
-
-        {
-          type: 'CONFERENCE PAPER',
-          title: 'PrefixGuard LLMs: Hate Speech and Sexism Detection',
-          date: 'Dec 2025',
-          publicationDetails: 'ACM/IEEE Joint Conference on Digital Libraries (JCDL)',
-          coAuthors: '',
-          doi: '',
-          description: 'Detecting hate speech and sexism on online platforms remains challenging because such content is often subtle and highly dependent on context. Large Language Models (LLMs) provide strong text representations for this task, but fully fine-tuning them is computationally expensive and can reinforce existing social biases. To address these limitations, we propose PrefixGuard — a parameter-efficient approach based on prefix tuning. Instead of updating all model weights, PrefixGuard learns small trainable prefix vectors at each Transformer layer and adds a lightweight classification head, while keeping the LLM backbone frozen. We formally define this method for text classification and analyze how it reshapes internal representations of biased or offensive language. Experiments on three benchmark datasets EDOS (sexism), OLID (offense), and HatEval (hate toward women and immigrants) show that PrefixGuard consistently outperforms BERT and RoBERTa baselines and reaches performance competitive with full fine-tuning, while training less than 1% of parameters. Additional analysis shows that PrefixGuard improves group-level fairness on HatEval, remains robust to adversarial text obfuscation, and produces better-calibrated probability outputs. These results highlight PrefixGuard as a practical, resource-efficient, and effective alternative to full fine-tuning for hate speech and sexism detection in real-world moderation systems.',
-          status: 'Forthcoming',
           ranking: 'A*',
         },
         {
@@ -296,8 +317,8 @@
           publicationDetails: 'IEEE International Conference on Data Mining (ICDM)',
           coAuthors:'' ,
           doi: '',
+          link: '',
           description: 'This paper introduces ASAP, a novel learning-augmented online allocation algorithm that achieves constant-factor proportional fairness. We address the challenge of making fair decisions in real-time environments with uncertain inputs by integrating machine learning predictions to guide a robust online framework.',
-          status: 'Forthcoming',
           ranking: 'A*',
         },
         {
@@ -307,8 +328,8 @@
           publicationDetails: 'International Conference on Asia-Pacific Digital Libraries (ICADL)',
           coAuthors:'',
           doi: '',
+          link: '',
           description: 'This study investigates the performance of large language models (LLMs) when processing and generating content related to historical narratives of Asian minority groups. We analyze the models for cultural biases and stereotypes, providing a critical assessment of their ability to handle sensitive and nuanced cultural information.',
-          status: 'Forthcoming',
           ranking: 'A',
         },
         {
@@ -318,8 +339,8 @@
           publicationDetails: 'International Conference on Asia-Pacific Digital Libraries (ICADL)',
           coAuthors:'',
           doi: '',
+          link: '',
           description: 'A comprehensive analysis of cultural biases embedded in prominent large language models. This research employs a novel framework to systematically uncover and quantify stereotypes across different cultures, offering insights for developing more equitable and culturally aware AI systems.',
-          status: 'Forthcoming',
           ranking: 'A',
         },
         {
@@ -402,6 +423,7 @@
           publicationDetails: 'Extraction Et Gestion Des Connaissances Egc 2021, pp. 515-516',
           coAuthors: 'Dorleon G, Bricon-Souf N, Megdiche I and Teste O.',
           doi: '',
+          link: '',
           description: '',
           ranking: 'C',
         }
@@ -535,7 +557,10 @@
         const isExpanded = expandedPublication === publication.title;
         const hasDescription = publication.description && publication.description.length > 0;
         const rankingClass = getRankingClass(publication.ranking);
-        const typeClass = publication.type === 'BOOK CHAPTER' ? 'text-purple-700 bg-purple-100' : 'text-green-700 bg-green-100';
+        let typeClass = 'text-green-700 bg-green-100';
+        if (publication.type === 'BOOK CHAPTER') typeClass = 'text-purple-700 bg-purple-100';
+        else if (publication.type === 'JOURNAL ARTICLE') typeClass = 'text-amber-700 bg-amber-100';
+        const publicationUrl = publication.link || (publication.doi ? `https://doi.org/${publication.doi}` : '');
 
         let descriptionHTML = '';
         if (hasDescription) {
@@ -557,12 +582,6 @@
                     <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full ${typeClass}">
                         ${publication.type}
                     </span>
-                    ${publication.ranking ? `<span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full ${rankingClass}">
-                        CORE Rank: ${publication.ranking}
-                    </span>` : ''}
-                    ${publication.status === 'Forthcoming' ? `<span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-700 bg-blue-100">
-                        Forthcoming
-                    </span>` : ''}
                 </div>
 
                 <h4 class="text-xl font-bold text-slate-800 mt-3">${publication.title}</h4>
@@ -576,14 +595,14 @@
                 
                 <div class="mt-4 flex items-center justify-between">
                      ${publication.citations ? `<span class="text-sm text-slate-400">${publication.citations}</span>` : '<div></div>'}
-                     ${publication.doi ? `
+                     ${publicationUrl ? `
                         <a 
-                            href="https://doi.org/${publication.doi}" 
+                            href="${publicationUrl}" 
                             target="_blank" 
                             rel="noopener noreferrer"
                             class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-slate-800 transition-colors"
                         >
-                            View DOI
+                            View more
                             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                         </a>
                      ` : ''}
@@ -606,7 +625,7 @@ University of Paul Sabatier, Toulouse, France, 12/2022</li>
         `;
 
         // Research Interests Content
-        const researchInterests = [ 'Machine Learning', 'Decision Systems', 'AI for Healthcare', 'Explainable AI', 'Responsible AI', 'Data Bias', 'Fairness & Transparency', 'Algorithm Fairness', 'Multi-Agent System', 'Responsible Gen AI'];
+        const researchInterests = [ 'Machine Learning', 'Decision Systems', 'AI for Healthcare', 'Explainable AI', 'Responsible AI', 'Data Bias', 'Fairness & Transparency', 'Algorithm Fairness', 'Multi-Agent System', 'Responsible Gen AI', 'AI Alignment', 'AI Monitoring'];
         const interestsContent = `
             <div class="flex flex-wrap gap-3">
                 ${researchInterests.map(interest => `
@@ -657,8 +676,7 @@ University of Paul Sabatier, Toulouse, France, 12/2022</li>
                                 </p>
                                 <p>
                                     My work explores machine learning, algorithm bias, fairness, explainability, and responsible AI, with experience across academia and industry in France, Spain, the U.S., and Vietnam. 
-                                   
-
+                                </p>
                             </div>
                         </section>
                         
